@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="entrarCoche"
     tools:context=".ParkingActivity">
 
     <Button
@@ -27,6 +26,7 @@
         android:layout_height="33dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="54dp"
+        android:onClick="salirCoche"
         android:text="-"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/restMoto"
@@ -75,7 +75,6 @@
         android:layout_height="78dp"
         android:layout_marginStart="43dp"
         android:layout_marginEnd="110dp"
-        android:text="10"
         android:textAlignment="center"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +88,6 @@
         android:id="@+id/textNumMoto"
         android:layout_width="109dp"
         android:layout_height="78dp"
-        android:text="5"
         android:textAlignment="center"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"

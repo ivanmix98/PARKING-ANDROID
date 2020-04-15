@@ -14,128 +14,112 @@ public class ParkingActivity extends AppCompatActivity {
     private Parking parkingMoto = new Parking();
     private Marcador marcadorCoche = new Marcador();
     private Marcador marcadorMoto = new Marcador();
+    private String nom, quantitatCoches, quantitatMotos;
+    private TextView textNom, textCoche, textMoto;
+    private Button restCoche, restMoto, sumCoche, sumMoto;
+    private int numeroCoche, numeroMoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking);
 
-        //coger los mensajes del intent
-        Intent intent = getIntent();
-        String nom = intent.getStringExtra(MainActivity.NOM_PARKING);
-        String quantitatCoches = intent.getStringExtra(MainActivity.QUANTITAT_COCHES);
-        String quantitatMotos = intent.getStringExtra(MainActivity.QUANTITAT__MOTOS);
+        textNom = findViewById(R.id.textNomParking);
+        textCoche = findViewById(R.id.textNumCoche);
+        textMoto = findViewById(R.id.textNumMoto);
+        restCoche = findViewById(R.id.restCoche);
+        restMoto = findViewById(R.id.restMoto);
+        sumCoche = findViewById(R.id.sumCoche);
+        sumMoto = findViewById(R.id.sumMoto);
 
-        //poner los mensajes del intent
-        TextView textNom = findViewById(R.id.textNomParking);
-        TextView textCoche = findViewById(R.id.textNumCoche);
-        TextView textMoto = findViewById(R.id.textNumMoto);
-        Button restCoche = findViewById(R.id.restCoche);
-        Button restMoto = findViewById(R.id.restMoto);
+        //coger los mensajes del intent y ponerlos
+        Intent intent = getIntent();
+        nom = intent.getStringExtra(MainActivity.NOM_PARKING);
+        quantitatCoches = intent.getStringExtra(MainActivity.QUANTITAT_COCHES);
+        quantitatMotos = intent.getStringExtra(MainActivity.QUANTITAT__MOTOS);
         textNom.setText(nom);
         textCoche.setText(quantitatCoches);
         textMoto.setText(quantitatMotos);
 
-
-        int numeroCoche = Integer.parseInt(quantitatCoches);
-        int numeroMoto = Integer.parseInt(quantitatMotos);
-
+        //init
+        numeroCoche = Integer.parseInt(quantitatCoches);
+        numeroMoto = Integer.parseInt(quantitatMotos);
 
         marcadorCoche.setNumeroPlazas(numeroCoche);
         parkingCoche.anadirObserverCoche(marcadorCoche);
-        textCoche.setText(marcadorCoche.getNumeroPlazasLibres()+"");
-
+        textCoche.setText(marcadorCoche.getNumeroPlazasLibres() + "");
 
         marcadorMoto.setNumeroPlazas(numeroMoto);
         parkingMoto.anadirObserverCoche(marcadorMoto);
-        textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
-        //circleMotos.setFill(Paint.valueOf("#2bff00")); <--- pone el semaforo en verde, por si usamos algo de eso
+        textMoto.setText(marcadorMoto.getNumeroPlazasLibres() + "");
 
         restCoche.setEnabled(false);
         restMoto.setEnabled(false);
 
-
     }
 
-    public void entrarCoche(View v){
-        Button sumCoche = findViewById(R.id.sumCoche);
-        Button resCoche = findViewById(R.id.restCoche);
-        TextView textCoche = findViewById(R.id.textNumCoche);
+    public void entrarCoche(View v) {
 
         parkingCoche.anadirCoche(new Coche());
-        textCoche.setText(marcadorCoche.getNumeroPlazasLibres()+"");
-        if(marcadorCoche.getNumeroPlazasLibres() < marcadorCoche.getNumeroPlazas()){
-            resCoche.setEnabled(true);
+        textCoche.setText(marcadorCoche.getNumeroPlazasLibres() + "");
+        if (marcadorCoche.getNumeroPlazasLibres() < marcadorCoche.getNumeroPlazas()) {
+            restCoche.setEnabled(true);
         }
-        if(marcadorCoche.getNumeroPlazasLibres() <= 0){
+        if (marcadorCoche.getNumeroPlazasLibres() <= 0) {
             //circleCoche.setFill(Paint.valueOf("Red"));
             sumCoche.setEnabled(false);
 
-        }else {
+        } else {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
         }
     }
 
-    public void salirCoche(View v){
-        Button sumCoche = findViewById(R.id.sumCoche);
-        Button resCoche = findViewById(R.id.restCoche);
-        TextView textCoche = findViewById(R.id.textNumCoche);
+    public void salirCoche(View v) {
 
         parkingCoche.salirCoche(0);
-        textCoche.setText(marcadorCoche.getNumeroPlazasLibres()+"");
-        if(marcadorCoche.getNumeroPlazasLibres() < marcadorCoche.getNumeroPlazas()){
-            resCoche.setEnabled(true);
-        }else if(marcadorCoche.getNumeroPlazasLibres() == marcadorCoche.getNumeroPlazas()){
-            resCoche.setEnabled(false);
+        textCoche.setText(marcadorCoche.getNumeroPlazasLibres() + "");
+        if (marcadorCoche.getNumeroPlazasLibres() < marcadorCoche.getNumeroPlazas()) {
+            restCoche.setEnabled(true);
+        } else if (marcadorCoche.getNumeroPlazasLibres() == marcadorCoche.getNumeroPlazas()) {
+            restCoche.setEnabled(false);
         }
-        if(marcadorCoche.getNumeroPlazasLibres() >= 0){
+        if (marcadorCoche.getNumeroPlazasLibres() >= 0) {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
             sumCoche.setEnabled(true);
-
-        }
-
-        else {
+        } else {
             //circleCoche.setFill(Paint.valueOf("#Red"));
         }
 
     }
 
-    public void entrarMoto(View v){
-        Button sumMoto = findViewById(R.id.sumMoto);
-        Button resMoto = findViewById(R.id.restMoto);
-        TextView textMoto = findViewById(R.id.textNumMoto);
-
+    public void entrarMoto(View v) {
         parkingMoto.anadirCoche(new Coche());
-        textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
-        if(marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()){
-            resMoto.setEnabled(true);
+        textMoto.setText(marcadorMoto.getNumeroPlazasLibres() + "");
+        if (marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()) {
+            restMoto.setEnabled(true);
         }
-        if(marcadorMoto.getNumeroPlazasLibres() <= 0){
+        if (marcadorMoto.getNumeroPlazasLibres() <= 0) {
             //circleCoche.setFill(Paint.valueOf("Red"));
             sumMoto.setEnabled(false);
 
-        }else {
+        } else {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
         }
     }
 
-    public void salirMoto(View v){
-        Button sumMoto = findViewById(R.id.sumMoto);
-        Button resMoto = findViewById(R.id.restMoto);
-        TextView textMoto = findViewById(R.id.textNumMoto);
+    public void salirMoto(View v) {
 
         parkingMoto.salirCoche(0);
-        textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
-        if(marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()){
-            resMoto.setEnabled(true);
-        }else if(marcadorMoto.getNumeroPlazasLibres() == marcadorMoto.getNumeroPlazas()){
-            resMoto.setEnabled(false);
+        textMoto.setText(marcadorMoto.getNumeroPlazasLibres() + "");
+        if (marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()) {
+            restMoto.setEnabled(true);
+        } else if (marcadorMoto.getNumeroPlazasLibres() == marcadorMoto.getNumeroPlazas()) {
+            restMoto.setEnabled(false);
         }
-        if(marcadorMoto.getNumeroPlazasLibres() >= 0){
+        if (marcadorMoto.getNumeroPlazasLibres() >= 0) {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
             sumMoto.setEnabled(true);
-        }
-        else {
+        } else {
             //circleCoche.setFill(Paint.valueOf("#Red"));
         }
 

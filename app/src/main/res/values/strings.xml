@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjecteM06UF4</string>
+    <string name="nom_del_parking">Nom del parking</string>
+    <string name="quantitat_coche">Número de coches</string>
+    <string name="quantitat_moto">Número de motos</string>
+    <string name="crear">Crear</string>
 </resources>

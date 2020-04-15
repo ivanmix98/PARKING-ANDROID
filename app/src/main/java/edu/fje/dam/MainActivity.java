@@ -2,40 +2,49 @@ package edu.fje.dam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Paint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Parking parkingCoche = new Parking();
-    private Parking parkingMoto = new Parking();
-    private Marcador marcadorCoche = new Marcador();
-    private Marcador marcadorMoto = new Marcador();
+    //Inicializar los campos a rellenar
+    private EditText Nom, QuantitatCoches, QuantitatMotos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Asignar los campos
+        Nom = (EditText) findViewById(R.id.nom);
+        QuantitatCoches = (EditText) findViewById(R.id.coches);
+        QuantitatMotos = (EditText) findViewById(R.id.motos);
     }
 
-    public void entrarCoche(View v){
-        final Button sumCoche = (Button) findViewById(R.id.sumCoche);
-        final Button resCoche = (Button) findViewById(R.id.restCoche);
-        final TextView textCoche = (TextView) findViewById(R.id.textNumCoche);
-        parkingCoche.anadirCoche(new Coche());
-        textCoche.setText(marcadorCoche.getNumeroPlazasLibres()+"");
-        if(marcadorCoche.getNumeroPlazasLibres() < marcadorCoche.getNumeroPlazas()){
-            resCoche.setEnabled(false);
-        }
-        if(marcadorCoche.getNumeroPlazasLibres() <= 0){
-            sumCoche.setEnabled(true);
+    //metodo boton
 
+
+    public static final String NOM_PARKING = "nom del parking:";
+    public void Crear(View v){
+        if(Nom.getText().toString().isEmpty()){
+            Toast.makeText(this, "Escriu el nom del parking", Toast.LENGTH_SHORT).show();
         }else {
-            textCoche.setText("hola");
+            if(QuantitatCoches.getText().toString().isEmpty()){
+                Toast.makeText(this, "Indica la quantitat de coches", Toast.LENGTH_SHORT).show();
+            }else{
+                if(QuantitatMotos.getText().toString().isEmpty()){
+                    Toast.makeText(this, "Indica la quantitat de motos", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "PARKING CREADO AH NO PARÁ WACHO FALTA QUE GUARDE LOS DATOS Y DEMÁS", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, ParkingActivity.class);
+                    String nom = Nom.getText().toString();
+                    intent.putExtra(NOM_PARKING, nom);
+                    startActivity(intent);
+                }
+            }
         }
     }
-
 }

@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static final String NOM_PARKING = "nom del parking:";
+    public static final String QUANTITAT_COCHES = "Quantitat coches:";
+    public static final String QUANTITAT__MOTOS = "Quantitat motos:";
     public void Crear(View v){
         if(Nom.getText().toString().isEmpty()){
             Toast.makeText(this, "Escriu el nom del parking", Toast.LENGTH_SHORT).show();
@@ -41,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "PARKING CREADO AH NO PARÁ WACHO FALTA QUE GUARDE LOS DATOS Y DEMÁS", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, ParkingActivity.class);
                     String nom = Nom.getText().toString();
+                    String quantitatCoches = QuantitatCoches.getText().toString();
+                    String quantitatMotos = QuantitatMotos.getText().toString();
                     intent.putExtra(NOM_PARKING, nom);
+                    intent.putExtra(QUANTITAT_COCHES, quantitatCoches);
+                    intent.putExtra(QUANTITAT__MOTOS, quantitatMotos);
                     startActivity(intent);
                 }
             }

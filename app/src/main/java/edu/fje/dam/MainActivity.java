@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo boton
 
-
     public static final String NOM_PARKING = "nom del parking:";
     public static final String QUANTITAT_COCHES = "Quantitat coches:";
     public static final String QUANTITAT__MOTOS = "Quantitat motos:";

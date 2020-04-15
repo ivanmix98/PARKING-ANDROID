@@ -15,7 +15,7 @@ public class ParkingActivity extends AppCompatActivity {
     private Marcador marcadorCoche = new Marcador();
     private Marcador marcadorMoto = new Marcador();
     private String nom, quantitatCoches, quantitatMotos;
-    private TextView textNom, textCoche, textMoto;
+    private TextView textNom, textCoche, textMoto, disponibilidadCoche, disponibilidadMoto;
     private Button restCoche, restMoto, sumCoche, sumMoto;
     private int numeroCoche, numeroMoto;
 
@@ -31,7 +31,8 @@ public class ParkingActivity extends AppCompatActivity {
         restMoto = findViewById(R.id.restMoto);
         sumCoche = findViewById(R.id.sumCoche);
         sumMoto = findViewById(R.id.sumMoto);
-
+        disponibilidadCoche = findViewById(R.id.disponibilidadCoche);
+        disponibilidadMoto = findViewById(R.id.disponibilidadMoto);
         //coger los mensajes del intent y ponerlos
         Intent intent = getIntent();
         nom = intent.getStringExtra(MainActivity.NOM_PARKING);
@@ -67,10 +68,12 @@ public class ParkingActivity extends AppCompatActivity {
         }
         if (marcadorCoche.getNumeroPlazasLibres() <= 0) {
             //circleCoche.setFill(Paint.valueOf("Red"));
+            disponibilidadCoche.setText("COMPLET");
             sumCoche.setEnabled(false);
 
         } else {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
+            disponibilidadCoche.setText("Disponible");
         }
     }
 
@@ -85,9 +88,11 @@ public class ParkingActivity extends AppCompatActivity {
         }
         if (marcadorCoche.getNumeroPlazasLibres() >= 0) {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
+            disponibilidadCoche.setText("Disponible");
             sumCoche.setEnabled(true);
         } else {
             //circleCoche.setFill(Paint.valueOf("#Red"));
+            disponibilidadCoche.setText("COMPLET");
         }
 
     }
@@ -100,10 +105,12 @@ public class ParkingActivity extends AppCompatActivity {
         }
         if (marcadorMoto.getNumeroPlazasLibres() <= 0) {
             //circleCoche.setFill(Paint.valueOf("Red"));
+            disponibilidadMoto.setText("COMPLET");
             sumMoto.setEnabled(false);
 
         } else {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
+            disponibilidadMoto.setText("Disponible");
         }
     }
 
@@ -118,9 +125,11 @@ public class ParkingActivity extends AppCompatActivity {
         }
         if (marcadorMoto.getNumeroPlazasLibres() >= 0) {
             //circleCoche.setFill(Paint.valueOf("#2bff00"));
+            disponibilidadMoto.setText("Disponible");
             sumMoto.setEnabled(true);
         } else {
             //circleCoche.setFill(Paint.valueOf("#Red"));
+            disponibilidadMoto.setText("COMPLET");
         }
 
     }

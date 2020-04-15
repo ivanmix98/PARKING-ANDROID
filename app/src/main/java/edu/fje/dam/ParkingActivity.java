@@ -35,11 +35,18 @@ public class ParkingActivity extends AppCompatActivity {
         textNom.setText(nom);
         textCoche.setText(quantitatCoches);
         textMoto.setText(quantitatMotos);
-        int numero = Integer.parseInt(quantitatCoches);
-        marcadorCoche.setNumeroPlazas(numero);
+
+
+        int numeroCoche = Integer.parseInt(quantitatCoches);
+        int numeroMoto = Integer.parseInt(quantitatMotos);
+
+
+        marcadorCoche.setNumeroPlazas(numeroCoche);
         parkingCoche.anadirObserverCoche(marcadorCoche);
         textCoche.setText(marcadorCoche.getNumeroPlazasLibres()+"");
-        marcadorMoto.setNumeroPlazas(numero);
+
+
+        marcadorMoto.setNumeroPlazas(numeroMoto);
         parkingMoto.anadirObserverCoche(marcadorMoto);
         textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
         //circleMotos.setFill(Paint.valueOf("#2bff00")); <--- pone el semaforo en verde, por si usamos algo de eso
@@ -87,6 +94,47 @@ public class ParkingActivity extends AppCompatActivity {
 
         }
 
+        else {
+            //circleCoche.setFill(Paint.valueOf("#Red"));
+        }
+
+    }
+
+    public void entrarMoto(View v){
+        Button sumMoto = findViewById(R.id.sumMoto);
+        Button resMoto = findViewById(R.id.restMoto);
+        TextView textMoto = findViewById(R.id.textNumMoto);
+
+        parkingMoto.anadirCoche(new Coche());
+        textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
+        if(marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()){
+            resMoto.setEnabled(true);
+        }
+        if(marcadorMoto.getNumeroPlazasLibres() <= 0){
+            //circleCoche.setFill(Paint.valueOf("Red"));
+            sumMoto.setEnabled(false);
+
+        }else {
+            //circleCoche.setFill(Paint.valueOf("#2bff00"));
+        }
+    }
+
+    public void salirMoto(View v){
+        Button sumMoto = findViewById(R.id.sumMoto);
+        Button resMoto = findViewById(R.id.restMoto);
+        TextView textMoto = findViewById(R.id.textNumMoto);
+
+        parkingMoto.salirCoche(0);
+        textMoto.setText(marcadorMoto.getNumeroPlazasLibres()+"");
+        if(marcadorMoto.getNumeroPlazasLibres() < marcadorMoto.getNumeroPlazas()){
+            resMoto.setEnabled(true);
+        }else if(marcadorMoto.getNumeroPlazasLibres() == marcadorMoto.getNumeroPlazas()){
+            resMoto.setEnabled(false);
+        }
+        if(marcadorMoto.getNumeroPlazasLibres() >= 0){
+            //circleCoche.setFill(Paint.valueOf("#2bff00"));
+            sumMoto.setEnabled(true);
+        }
         else {
             //circleCoche.setFill(Paint.valueOf("#Red"));
         }

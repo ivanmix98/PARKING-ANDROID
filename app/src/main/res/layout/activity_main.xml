@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="entrarCoche"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/sumMoto"
+        style="@android:style/Widget.Holo.Light.Button.Small"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="184dp"
+        android:text="+"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/restCoche"
+        style="@android:style/Widget.Holo.Light.Button.Small"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="54dp"
+        android:text="-"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/restMoto"
+        app:layout_constraintEnd_toStartOf="@+id/sumCoche"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/sumCoche"
+        style="@android:style/Widget.Holo.Light.Button.Small"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="54dp"
+        android:onClick="entrarCoche"
+        android:text="++"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/sumMoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/restMoto"
+        style="@android:style/Widget.Holo.Light.Button.Small"
+        android:layout_width="93dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="184dp"
+        android:text="-"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sumMoto"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
+        android:text="MOTO"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textNumCoche"
+        android:layout_width="109dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="110dp"
+        android:text="10"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textNumMoto"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <TextView
+        android:id="@+id/textNumMoto"
+        android:layout_width="109dp"
+        android:layout_height="78dp"
+        android:text="5"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="115dp"
+        android:text="PLACES LLIURES"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="116dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="40dp"
+        android:text="PLACES LLIURES"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="173dp"
+        android:text="COCHE"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
